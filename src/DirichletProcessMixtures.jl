@@ -1,5 +1,6 @@
 module DirichletProcessMixtures
 
+using Compat
 using ConjugatePriors
 using Devectorize
 using ArrayViews
