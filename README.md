@@ -3,9 +3,19 @@ DirichletProcessMixtures.jl
 
 This package implements Dirichlet Process Mixture Models in Julia using variational inference for truncated stick-breaking representation of Drichlet Process.
 
+## To get this running
+
+```julia
+Pkg.clone("https://github.com/alxempirical/DirichletProcessMixtures.jl")
+Pkg.add("Distributions")  # Necessary to compile this separately; don't know why
+using Distributions
+cd(Pkg.dir("DirichletProcessMixtures"))
+include("demo.jl")
+```
+
 ## (almost) infinite mixture of Gaussians
 
-Most likelely you need this package especially for this purpose, this is how to do Guassian clustering. You may check [demo code](demo.jl) which contains almost all functionality you may need.
+Most likely you need this package especially for this purpose, this is how to do Guassian clustering. You may check [demo code](demo.jl) which contains almost all functionality you may need.
 
 First off, you define your prior over parameters of mixture component (i.e. mean and precision matrix) using `NormalWishart` distribution:
 ```julia
