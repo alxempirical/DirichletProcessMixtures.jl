@@ -1,3 +1,4 @@
+import ArrayViews
 import Distributions.entropy
 
 immutable TSBPMM
@@ -105,7 +106,7 @@ function variational_update(mix::TSBPMM)
 
     ts = 0.
     for k=T(mix):-1:1
-        zk = view(mix.z, :, k)
+        zk = ArrayViews.view(mix.z, :, k)
         mix.cluster_update(k, zk)
         zs = sum(zk)
         if k < T(mix)
@@ -140,7 +141,7 @@ function loglikelihood(mix::TSBPMM)
 
     ts = 0.
     for k=T(mix):-1:1
-        zk = view(mix.z, :, k)
+        zk = ArrayViews.view(mix.z, :, k)
 #        zk = mix.z[:, k]
         ll += mix.cluster_loglikelihood(k, zk)
         assert(!isnan(ll))
